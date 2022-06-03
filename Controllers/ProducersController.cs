@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+
 using Microsoft.EntityFrameworkCore;
 using MovieStudio.Data;
 using MovieStudio.Models;
@@ -7,15 +8,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
+
 namespace MovieStudio.Controllers
 {
 	public class ProducersController : Controller
 	{
+
         private readonly AppDbContext _context;
         public ProducersController(AppDbContext context)
         {
             _context = context;
+            
         }
+
+        
 
         public async Task<IActionResult> Index()
         {

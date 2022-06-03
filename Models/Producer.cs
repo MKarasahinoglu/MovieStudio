@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace MovieStudio.Models
 		[Display(Name = "Biography")]
 		public string Bio { get; set; }
 		public List<Movie> Movies { get; set; }
+		
 	}
 }

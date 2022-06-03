@@ -92,5 +92,21 @@ namespace MovieStudio.Controllers
         }
 
 
+        public async Task<IActionResult> Filter(string searchString,Movie movie)
+        {
+            var allMovies = await _context.Movies.Include(p => p.Producer).ToListAsync();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                
+
+                var filteredResultNew = allMovies.Where(n => string.Equals(n.Name, searchString, StringComparison.CurrentCultureIgnoreCase) || string.Equals(n.Description, searchString, StringComparison.CurrentCultureIgnoreCase)).ToList();
+
+                return View("Index", filteredResultNew);
+            }
+
+            return View("Index", allMovies);
+        }
+
     }
 }
