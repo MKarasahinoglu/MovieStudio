@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MovieStudio.Data;
 using MovieStudio.Models;
@@ -26,19 +27,24 @@ namespace MovieStudio.Controllers
 
         //Create
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create(int? id)
         {
+            var data = _context.Movies.Find(id);
+            ViewBag.ProducerSelectList=new SelectList(_context.Producers,"Id","FullName");
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("FullName,ProfilePictureURL,Bio")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Name,ImageURL,MovieCategory,ProducerId,Description")] Movie movie)
         {
+            ViewData["ProducerId"] = new SelectList(_context.Producers, "Id", "FullName", movie.ProducerId);
             if (ModelState.IsValid)
             {
                 _context.Add(movie);
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            
             return View();
         }
 
@@ -46,8 +52,12 @@ namespace MovieStudio.Controllers
         [HttpGet]
         public IActionResult Edit(int? id)
         {
-            var data = _context.Movies.Include(p => p.Producer).Include(a => a.Actor_Movies).Where(i => i.Id == id).FirstOrDefault(i => i.Id == id);
+
+            var data = _context.Movies.Find(id);
+            ViewBag.ProducerSelectList = new SelectList(_context.Producers, "Id", "FullName");
             return View(data);
+            //var data = _context.Movies.Include(p => p.Producer).Include(a => a.Actor_Movies).Where(i => i.Id == id).FirstOrDefault(i => i.Id == id);
+            //return View(data);
 
         }
         [HttpPost]

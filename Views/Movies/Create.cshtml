@@ -37,7 +37,10 @@
 								<select asp-for="MovieCategory" class="form-control" asp-items="Html.GetEnumSelectList<MovieCategory>()"></select>
 								<span asp-validation-for="MovieCategory" class="text-danger"></span>
 							</div>
-							
+							<div class="form-group">
+								<label asp-for="ProducerId" class="control-label">Producer</label>
+								<select asp-for="ProducerId" class="form-control" asp-items="ViewBag.ProducerSelectList"></select>
+							</div>
 
 						</div>
 						
