@@ -1,23 +1,23 @@
 ﻿@model Movie
 @using MovieStudio.Data;
 
-@{ ViewData["Title"] = "Create a new movie"; }
+@{ ViewData["Title"] = "Add Movie"; }
 
-<div class="row">
-	<div class="col-md-8 offset-2">
+<div class="row mt-5" >
+	<div class="col-md-8 offset-2 text-center" style="background-color:#141414">
 		<p>
-			<h4>Create a new movie</h4>
+			<h3 class="text-warning">Add Movie</h3>
 		</p>
 
-		<div class="row">
-			<div class="col-md-8 offset-2">
+		<div class="row" style="background-color:#101010">
+			<div class="col-md-8 offset-2 text-left" >
 				<form asp-action="Create">
 					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-					<div class="row">
+					<div class="row mt-2" >
 						<div class="col-md-6">
 							<div class="form-group">
-								<label asp-for="Name" class="control-label"></label>
+								<label asp-for="Name" class="control-label text-white"></label>
 								<input asp-for="Name" class="form-control" />
 								<span asp-validation-for="Name" class="text-danger"></span>
 							</div>
@@ -25,7 +25,7 @@
 
 
 							<div class="form-group">
-								<label asp-for="ImageURL" class="control-label"></label>
+								<label asp-for="ImageURL" class="control-label text-white"></label>
 								<input asp-for="ImageURL" class="form-control" />
 								<span asp-validation-for="ImageURL" class="text-danger"></span>
 							</div>
@@ -33,12 +33,12 @@
 						<div class="col-md-6">
 
 							<div class="form-group">
-								<label asp-for="MovieCategory" class="control-label"></label>
+								<label asp-for="MovieCategory" class="control-label text-white"></label>
 								<select asp-for="MovieCategory" class="form-control" asp-items="Html.GetEnumSelectList<MovieCategory>()"></select>
 								<span asp-validation-for="MovieCategory" class="text-danger"></span>
 							</div>
 							<div class="form-group">
-								<label asp-for="ProducerId" class="control-label">Producer</label>
+								<label asp-for="ProducerId" class="control-label text-white">Producer</label>
 								<select asp-for="ProducerId" class="form-control" asp-items="ViewBag.ProducerSelectList"></select>
 							</div>
 
@@ -47,7 +47,7 @@
 						
 						<div class="col-md-12">
 							<div class="form-group">
-								<label asp-for="Description" class="control-label"></label>
+								<label asp-for="Description" class="control-label text-white"></label>
 								<textarea asp-for="Description" class="form-control"></textarea>
 								<span asp-validation-for="Description" class="text-danger"></span>
 							</div>
@@ -59,8 +59,8 @@
 					</div>
 
 					<div class="form-group">
-						<input type="submit" value="Create" class="btn btn-outline-success float-right" />
-						<a class="btn btn-outline-secondary" asp-action="Index">Show all</a>
+						<input type="submit" value="Create" class="btn btn-warning float-right" />
+						<a class="btn btn-outline-warning" asp-action="Index">Show all</a>
 					</div>
 
 				</form>

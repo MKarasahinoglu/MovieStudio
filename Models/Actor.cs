@@ -17,6 +17,6 @@ namespace MovieStudio.Models
 		public string FullName { get; set; }
 		[Display(Name = "Biography")]
 		public string Bio { get; set; }
-		public List<Actor_Movie> Actors_Movies { get; set; }
+		
 	}
 }

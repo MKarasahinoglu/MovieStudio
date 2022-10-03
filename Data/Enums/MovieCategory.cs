@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@ namespace MovieStudio.Data
 		Horror,
 		Musical,
 		Romance,
+		[Display(Name ="Sci-Fi")]
 		Sci_Fi,
 		Sport,
 		Thriller,

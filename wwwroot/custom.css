@@ -1,0 +1,8 @@
+﻿.table-borderless td,
+.table-borderless th {
+	border: 0;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+	background-color: #e5c95d !important;
+}

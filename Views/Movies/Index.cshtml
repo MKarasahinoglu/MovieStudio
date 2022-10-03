@@ -2,19 +2,27 @@
 
 @{ ViewData["Title"] = "List of Movies"; }
 
+<div class="row mb-2 text-center">
+	<div class="col">
+		<a class="btn btn-warning" style="font-family:Cambria;font-size: 15px" asp-controller="Movies" asp-action="Create"><i class="bi bi-plus-square-fill"></i> Add Movie</a>
+	</div>
+
+</div>
 <div class="row">
+	
 	@foreach (var item in Model)
 	{
-<div class="col-md-4 col-xs-6 border-primary mb-3">
-	<div class="card mb-3" style="max-width: 540px;">
+<div class="col-md-4 col-xs-6 mb-3">
+	<div class="card mb-3 border-0" style="max-width: 540px;background-color:#141414">
 		<div class="row g-0">
 			<div class="col-md-12">
-				<div class="card-header text-white bg-info">
+				<div class="card-header bg-warning" style="color:black">
 					<p class="card-text">
 						<h5 class="card-title">
 							@item.Name
-							
-			<a class="text-white float-right" asp-controller="Movies" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+							<a class="float-right text-danger ml-2" asp-controller="Movies" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+							<a class="float-right" asp-controller="Movies" asp-action="Edit" asp-route-id="@item.Id" style="color:black"><i class="bi bi-pencil-square"></i></a>
+
 						</h5>
 					</p>
 				</div>
@@ -24,19 +32,19 @@
 			</div>
 			<div class="col-md-6">
 				<div class="card-body">
-					<p class="card-text">@item.Description</p>
-					<p class="card-text"><b>Producer: </b>@item.Producer.FullName</p>
+					<p class="card-text text-white">@item.Description</p>
+					<p class="card-text text-white"><b class="text-warning">Director: </b>@item.Producer.FullName</p>
 					
-					<p class="card-text"><b>Category: </b>@item.MovieCategory</p>
+					<p class="card-text text-white"><b class="text-warning">Genre: </b>@item.MovieCategory</p>
 
 
 
 				</div>
 			</div>
 			<div class="col-md-12">
-				<div class="card-footer ">
+				<div class="card-footer">
 					<p class="card-text">
-						<a class="btn btn-outline-primary float-right" asp-controller="Movies" asp-action="Details" asp-route-id="@item.Id">
+						<a class="btn btn-warning float-right mb-3" asp-controller="Movies" asp-action="Details" asp-route-id="@item.Id">
 							<i class="bi bi-eye-fill"></i> Show Details
 						</a>
 						

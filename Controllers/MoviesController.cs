@@ -63,7 +63,7 @@ namespace MovieStudio.Controllers
         [HttpPost]
         public IActionResult Edit(Movie movie)
         {
-            var data = _context.Movies.Include(p => p.Producer).Include(a => a.Actor_Movies).Where(i => i.Id == movie.Id).FirstOrDefault(i => i.Id == movie.Id);
+            var data = _context.Movies.Include(p => p.Producer).Where(i => i.Id == movie.Id).FirstOrDefault(i => i.Id == movie.Id);
             if (ModelState.IsValid)
             {
 
@@ -92,10 +92,11 @@ namespace MovieStudio.Controllers
 
         }
 
+
         //Details
         public IActionResult Details(int? id)
         {
-            var data = _context.Movies.Include(p => p.Producer).Include(a => a.Actor_Movies).Where(i => i.Id == id).FirstOrDefault(i => i.Id == id);
+            var data = _context.Movies.Include(p => p.Producer).Where(i => i.Id == id).FirstOrDefault(i => i.Id == id);
            
             return View(data);
 
